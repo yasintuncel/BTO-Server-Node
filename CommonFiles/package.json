@@ -5,5 +5,8 @@
   "main": "server.js",
   "keywords": [],
   "author": "yasintuncel",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.1.5"
+  }
 }
