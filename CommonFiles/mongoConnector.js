@@ -20,4 +20,5 @@ const mongoConnector = async function (uri) {
         };
     }
 };
+
 module.exports = mongoConnector;
