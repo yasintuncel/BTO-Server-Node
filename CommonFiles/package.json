@@ -1,12 +1,9 @@
 {
   "name": "commonfiles",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Common Files for BTO Backend Projects",
+  "main": "server.js",
   "keywords": [],
-  "author": "",
+  "author": "yasintuncel",
   "license": "ISC"
 }

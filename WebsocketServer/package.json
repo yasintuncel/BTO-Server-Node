@@ -1,12 +1,9 @@
 {
   "name": "websocketserver",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Websocket Server of the BTO",
+  "main": "server.js",
   "keywords": [],
-  "author": "",
+  "author": "yasintuncel",
   "license": "ISC"
 }
