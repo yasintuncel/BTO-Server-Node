@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {ActivitySchema} = require('./user/activity');
-const {LevelSchema} = require('./user/level');
-const {GoldSchema} = require('./user/gold');
-const {UserStatusSchema} = require('./user/status');
+const { ActivitySchema } = require('./user/activity');
+const { LevelSchema } = require('./user/level');
+const { GoldSchema } = require('./user/gold');
+const { UserStatusSchema } = require('./user/status');
 
 const UserSchema = new Schema({
     nickName: { type: String, required: true },

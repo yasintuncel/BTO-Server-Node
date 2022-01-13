@@ -9,7 +9,6 @@
   "dependencies": {
     "common": "file:../CommonFiles",
     "express": "^4.17.2",
-    "jsonwebtoken": "^8.5.1",
-    "randomstring-yt": "^1.0.3"
+    "jsonwebtoken": "^8.5.1"
   }
 }
