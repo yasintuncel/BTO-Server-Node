@@ -1,7 +1,7 @@
 const config = require('../config');
 
 const registerMiddleware = function (req, res, next) {
-    if (req.headers['registerKey'] === config.registerKey) {
+    if (req.headers['registerkey'] === config.registerKey) {
         next();
     }
     else {

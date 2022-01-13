@@ -1,4 +1,4 @@
-const mongoConnector = require('common/mongoConnector');
+const mongoConnector = require('common/database/mongoConnector');
 const config = require('./config');
 const createHttpServer = require('./createHttpServer');
 //
