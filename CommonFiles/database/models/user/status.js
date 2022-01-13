@@ -6,7 +6,7 @@ const UserStatusSchema = new Schema({
     isInBlackList: { type: Boolean, default: false },
     blackListAt: { type: Number },
     isDeleted: { type: Boolean, default: false },
-    deleteAt: { type: Number },
+    deleteAt: { type: Number, default: null },
 }, { _id: false });
 
 const UserStatus = mongoose.model('userStatus', UserStatusSchema);

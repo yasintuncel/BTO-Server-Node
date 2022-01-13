@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const {GameAreaSchema} = require('./game/area');
+const {PlayerSchema} = require('./game/player');
 
 const GameSchema = new Schema({
     playCount: { type: Number, default: 3 },
