@@ -7,8 +7,9 @@
   "author": "yasintuncel",
   "license": "ISC",
   "dependencies": {
-    "common": "../CommonFiles",
+    "common": "file:../CommonFiles",
     "express": "^4.17.2",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "randomstring-yt": "^1.0.3"
   }
 }
