@@ -13,17 +13,25 @@ const createNewGuestUser = function (nickName, tokenSecretKey, tokenDuration) {
         lowersCount: 5,
         numbersCount: 5,
     });
+    const iconFileName = randomstring({
+        lowersCount: 5,
+        uppersCount: 5,
+        numbersCount: 5,
+        specialsCount: 4,
+        specials: '_-'
+    });
 
     let newUser = new User({
         nickName: nickName,
         uid: uid,
+        identicon: iconFileName,
         status: UserStatus(),
         level: Level(),
         gold: Gold(),
         activity: Activity(),
     });
 
-    // identiconGenerator(uid);
+    identiconGenerator(iconFileName);
 
     const jwtToken = jsonwebtoken.sign(
         { userId: newUser._id, nickName: nickName },
