@@ -7,7 +7,7 @@ const UserStatusSchema = new Schema({
     blackListAt: { type: Number },
     isDeleted: { type: Boolean, default: false },
     deleteAt: { type: Number, default: null },
-}, { _id: false });
+}, { _id: false, autoCreate: false });
 
 const UserStatus = mongoose.model('userStatus', UserStatusSchema);
 

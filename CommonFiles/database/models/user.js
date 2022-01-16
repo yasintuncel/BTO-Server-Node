@@ -8,6 +8,7 @@ const { UserStatusSchema } = require('./user/status');
 const UserSchema = new Schema({
     nickName: { type: String, required: true },
     uid: { type: String, required: true, unique: true },
+    identicon: { type: String, default: 'default.png' },
     token: { type: String }, // TODO delete on prod
     createdAt: { type: Number, default: Date.now },
     status: UserStatusSchema,

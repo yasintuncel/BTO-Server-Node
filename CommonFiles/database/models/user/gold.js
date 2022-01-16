@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const GoldSchema = new Schema({
     amount: { type: Number, default: 1000 },
     isIncreased: { type: Boolean, default: true },
-}, { _id: false });
+}, { _id: false, autoCreate: false });
 
 const Gold = mongoose.model('gold', GoldSchema);
 

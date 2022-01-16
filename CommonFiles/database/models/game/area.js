@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const GameAreaSchema = new Schema({
 
-}, { _id: false });
+}, { _id: false, autoCreate: false });
 
 const GameArea = mongoose.model('gameArea', GameAreaSchema);
 

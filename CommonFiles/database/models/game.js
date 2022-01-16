@@ -8,6 +8,7 @@ const GameSchema = new Schema({
     isFull: { type: Boolean, default: false },
     gold: { type: Number, default: 50 },
     isStarted: { type: Boolean, default: false },
+    isPrivate: { type: Boolean, default: false },
     currentQueue: { type: Number, default: -1 },
     createdAt: { type: Number, default: Date.now },
     area: GameAreaSchema,

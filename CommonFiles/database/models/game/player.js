@@ -9,7 +9,7 @@ const PlayerSchema = new Schema({
         ref: 'user',
         default: null,
     },
-}, { _id: false });
+}, { _id: false, autoCreate: false });
 
 const Player = mongoose.model('activity', PlayerSchema);
 
