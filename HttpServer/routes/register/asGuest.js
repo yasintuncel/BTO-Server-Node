@@ -9,13 +9,13 @@ const asGuest = async function (req, res) {
         return;
     }
 
-    const newUserStatus = createNewGuestUser(nickName, config.apiScreetKey, config.tokenDuration);
-
+    const newUserStatus = await createNewGuestUser(nickName, config.apiScreetKey, config.tokenDuration);
+    console.log(newUserStatus.message + ` Request ip: + ${req.ip}`);
     if (newUserStatus.isCreated) {
-        res.status(200).json({ "token": jwtToken });
+        res.status(200).json({ "token": newUserStatus.token });
     }
     else {
-        res.status(500).json({ 'error': e });
+        res.status(500).json(newUserStatus.message);
     }
 };
 

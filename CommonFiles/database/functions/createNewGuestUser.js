@@ -1,5 +1,6 @@
 const randomstring = require('randomstring-yt');
 const jsonwebtoken = require('jsonwebtoken');
+const identiconGenerator = require('../../utils/identiconGenerator');
 
 const { User } = require('../models/user');
 const { UserStatus } = require('../models/user/status');
@@ -7,7 +8,7 @@ const { Level } = require('../models/user/level');
 const { Gold } = require('../models/user/gold');
 const { Activity } = require('../models/user/activity');
 
-const createNewGuestUser = function (nickName, tokenSecretKey, tokenDuration) {
+const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDuration) {
 
     const uid = randomstring({
         lowersCount: 5,
@@ -45,7 +46,7 @@ const createNewGuestUser = function (nickName, tokenSecretKey, tokenDuration) {
         return {
             isCreated: true,
             token: jwtToken,
-            message: `New Guest User created. User id: ${newUser._id}. Request ip: + ${req.ip}`
+            message: `New Guest User created. User id: ${newUser._id}.`
         };
     } catch (e) {
         return {
