@@ -6,7 +6,7 @@ const ActivitySchema = new Schema({
     lastActiveAt: { type: Number, default: Date.now },
     isInGame: { type: Boolean, default: false },
     gameId: { type: String, default: "none" },
-}, { _id: false });
+}, { _id: false, autoCreate: false });
 
 const Activity = mongoose.model('activity', ActivitySchema);
 
