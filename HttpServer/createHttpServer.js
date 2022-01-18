@@ -1,11 +1,14 @@
 const express = require('express');
 //
 const registerRoutes = require('./routes/registerRoutes');
+const tokenRoutes = require('./routes/tokenRoutes');
 const apiRoutes = require('./routes/apiRoutes');
+//
+const undefinedRoutes = require('./routes/undefinedRoutes');
 //
 const registerMiddleware = require('./middlewares/registerMiddleware');
 const apiMiddleware = require('./middlewares/apiMiddleware');
-const undefinedRoutes = require('./routes/undefinedRoutes');
+const refreshMiddleware = require('./middlewares/refreshMiddleware');
 
 const createHttpServer = function (port) {
     var app = express();
@@ -13,6 +16,7 @@ const createHttpServer = function (port) {
     app.use(express.urlencoded({ extended: true })); // instead of bodyparser
 
     app.use('/register', registerMiddleware, registerRoutes); //key
+    app.use('/token', refreshMiddleware, tokenRoutes); //key
     app.use('/api', apiMiddleware, apiRoutes); // token
 
     app.use('*', undefinedRoutes);

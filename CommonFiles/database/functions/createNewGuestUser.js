@@ -33,19 +33,14 @@ const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDurati
     });
 
     identiconGenerator(iconFileName);
-
-    const jwtToken = jsonwebtoken.sign(
-        { id: newUser._id },
-        tokenSecretKey,
-        { expiresIn: tokenDuration });
-
-    newUser.token = jwtToken;
+    const token = tokenGenerator(newUser._id, config.tokenSecretKey, config.tokenDuration);
+    newUser.token = token;
 
     try {
         await newUser.save();
         return {
             isCreated: true,
-            token: jwtToken,
+            token: token,
             message: `New Guest User created. User id: ${newUser._id}.`
         };
     } catch (e) {
