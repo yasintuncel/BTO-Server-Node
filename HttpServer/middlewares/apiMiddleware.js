@@ -11,8 +11,8 @@ const apiMiddleware = function (req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, config.apiScreetKey); // payload, {}
-        req.userId = decoded;
+        const decoded = jwt.verify(token, config.apiScreetKey);
+        req.userId = decoded.id;
         next();
     } catch (err) {
         // suresi dolanlar buraya dusuyor
