@@ -1,6 +1,6 @@
 const express = require('express');
-const userRoutes = require('./user/userRoutes');
-const gameRoutes = require('./game/gameRoutes');
+const userRoutes = require('./api/userRoutes');
+const gameRoutes = require('./api/gameRoutes');
 const router = express.Router();
 
 // api/user/x

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const getUser = require('./getUser');
+const getUser = require('./user/getUser');
 
 router.get('/', getUser);
 // router.post('/', createUser);

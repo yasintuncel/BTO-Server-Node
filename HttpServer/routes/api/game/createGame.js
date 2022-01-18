@@ -1,11 +1,11 @@
 const createNewGame = require('common/database/functions/createNewGame');
 const { User } = require('common/database//models/user');
-const createGame = async function (req, res) {
 
-    var { playCount, gold, isPrivate } = req.body;
+const createGame = async function (req, res) {
+    let { playCount, gold, isPrivate } = req.body; // 3/5
 
     if (!(playCount && gold && isPrivate)) {//&& email
-        res.status(400).send("All fields are required");
+        res.status(400).json({ 'error': 'All fields are required' });
     }
     else {
         const userId = req.userId;

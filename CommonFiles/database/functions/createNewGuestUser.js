@@ -35,7 +35,7 @@ const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDurati
     identiconGenerator(iconFileName);
 
     const jwtToken = jsonwebtoken.sign(
-        newUser._id,
+        { id: newUser._id },
         tokenSecretKey,
         { expiresIn: tokenDuration });
 

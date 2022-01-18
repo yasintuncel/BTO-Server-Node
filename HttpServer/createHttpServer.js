@@ -1,7 +1,7 @@
 const express = require('express');
 //
-const registerRoutes = require('./routes/register/registerRoutes');
-const apiRoutes = require('./routes/api/apiRoutes');
+const registerRoutes = require('./routes/registerRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 //
 const registerMiddleware = require('./middlewares/registerMiddleware');
 const apiMiddleware = require('./middlewares/apiMiddleware');
