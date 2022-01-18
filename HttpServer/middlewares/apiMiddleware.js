@@ -7,7 +7,7 @@ const apiMiddleware = async function (req, res, next) {
 
     if (!token) {
         console.log('A token is required for authentication. Request ip: ' + req.ip);
-        res.status(403).json({ 'message': 'A token is required for authentication.' });
+        res.status(403).json({ 'error': 'A token is required for authentication.' });
         return;
     }
 
@@ -22,7 +22,7 @@ const apiMiddleware = async function (req, res, next) {
     } catch (err) {
         // suresi dolanlar buraya dusuyor
         console.log('Invalid Token. Request ip: ' + req.ip);
-        res.status(401).json({ 'message': err });
+        res.status(401).json({ 'error': err });
     }
 };
 

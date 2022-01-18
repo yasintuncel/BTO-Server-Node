@@ -1,3 +1,4 @@
+const home = require('os').homedir();
 const express = require('express');
 //
 const registerRoutes = require('./routes/registerRoutes');
@@ -19,6 +20,7 @@ const createHttpServer = function (port) {
     app.use('/token', refreshMiddleware, tokenRoutes); //key
     app.use('/api', apiMiddleware, apiRoutes); // token
 
+    app.use('/images/identicons', express.static(home + '/Documents/images/identicons'))
     app.use('*', undefinedRoutes);
 
     app.listen(port, () => {

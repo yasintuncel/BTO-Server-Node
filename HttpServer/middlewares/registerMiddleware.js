@@ -6,7 +6,7 @@ const registerMiddleware = function (req, res, next) {
     }
     else {
         console.log('Unauthorized request. Request ip: ' + req.ip);
-        res.status(401).json({ error: 'Unauthorized request.' });
+        res.status(401).json({ 'error': 'Unauthorized request.' });
     }
 };
 
