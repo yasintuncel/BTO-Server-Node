@@ -1,7 +1,7 @@
 const config = require('../config');
 
-const registerMiddleware = function (req, res, next) {
-    if (req.headers['registerkey'] === config.registerKey) {
+const tokenMiddleware = function (req, res, next) {
+    if (req.headers['tokenkey'] === config.tokenKey) {
         next();
     }
     else {
@@ -10,4 +10,4 @@ const registerMiddleware = function (req, res, next) {
     }
 };
 
-module.exports = registerMiddleware;
+module.exports = tokenMiddleware;

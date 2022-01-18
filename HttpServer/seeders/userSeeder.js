@@ -29,7 +29,7 @@ const userSeeder = async function () {
             console.log('Seeder - Read - User');
         }
         else {
-            const userStatus = await createNewGuestUser(userInfo.nickName, config.apiScreetKey, config.tokenDuration);
+            const userStatus = await createNewGuestUser(userInfo.nickName, config.tokenScreetKey, config.tokenDuration);
 
             console.log(userStatus.message);
 

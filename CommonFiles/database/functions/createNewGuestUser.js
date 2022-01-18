@@ -7,6 +7,7 @@ const { UserStatus } = require('../models/user/status');
 const { Level } = require('../models/user/level');
 const { Gold } = require('../models/user/gold');
 const { Activity } = require('../models/user/activity');
+const tokenGenerator = require('../../utils/tokenGenerator');
 
 const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDuration) {
 
@@ -33,19 +34,14 @@ const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDurati
     });
 
     identiconGenerator(iconFileName);
-
-    const jwtToken = jsonwebtoken.sign(
-        { id: newUser._id },
-        tokenSecretKey,
-        { expiresIn: tokenDuration });
-
-    newUser.token = jwtToken;
+    const token = tokenGenerator(newUser._id, tokenSecretKey, tokenDuration);
+    newUser.token = token;
 
     try {
         await newUser.save();
         return {
             isCreated: true,
-            token: jwtToken,
+            token: token,
             message: `New Guest User created. User id: ${newUser._id}.`
         };
     } catch (e) {

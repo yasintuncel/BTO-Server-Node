@@ -9,7 +9,7 @@ const asGuest = async function (req, res) {
         return;
     }
 
-    const newUserStatus = await createNewGuestUser(nickName, config.apiScreetKey, config.tokenDuration);
+    const newUserStatus = await createNewGuestUser(nickName, config.tokenScreetKey, config.tokenDuration);
     console.log(newUserStatus.message + ` Request ip: + ${req.ip}`);
     if (newUserStatus.isCreated) {
         res.status(200).json({ "token": newUserStatus.token });
