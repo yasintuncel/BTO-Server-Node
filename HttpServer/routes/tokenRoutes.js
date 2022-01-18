@@ -4,6 +4,6 @@ const refreshToken = require('./token/refreshToken');
 const router = express.Router();
 
 router.post('/refresh', refreshToken);
-// router.post('/facebook', asFacebook);
+// post /token/refresh => new token
 
 module.exports = router;

@@ -14,13 +14,8 @@ const apiMiddleware = async function (req, res, next) {
     try {
         const decoded = jwt.verify(token, config.tokenScreetKey);
         req.userId = decoded.id;
-        let user = await User.findById(decoded.id);
-        if (user.token === token) { next(); }
-        else {
-            throw 'Bad token';
-        }
+        next();
     } catch (err) {
-        // suresi dolanlar buraya dusuyor
         console.log('Invalid Token. Request ip: ' + req.ip);
         res.status(401).json({ 'error': err });
     }

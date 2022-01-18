@@ -1,7 +1,7 @@
 const config = require('../config');
 
-const refreshMiddleware = function (req, res, next) {
-    if (req.headers['refreshkey'] === config.refreshKey) {
+const tokenMiddleware = function (req, res, next) {
+    if (req.headers['tokenkey'] === config.tokenKey) {
         next();
     }
     else {
@@ -10,4 +10,4 @@ const refreshMiddleware = function (req, res, next) {
     }
 };
 
-module.exports = refreshMiddleware;
+module.exports = tokenMiddleware;
