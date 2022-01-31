@@ -31,6 +31,8 @@ const createNewGuestUser = async function (nickName, tokenSecretKey, tokenDurati
         level: Level(),
         gold: Gold(),
         activity: Activity(),
+        friends: [],
+        friendRequests: []
     });
 
     identiconGenerator(iconFileName);
