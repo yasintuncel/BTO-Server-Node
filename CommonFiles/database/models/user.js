@@ -4,6 +4,8 @@ const { ActivitySchema } = require('./user/activity');
 const { LevelSchema } = require('./user/level');
 const { GoldSchema } = require('./user/gold');
 const { UserStatusSchema } = require('./user/status');
+const { FriendSchema } = require('./user/friend');
+const { FriendRequestSchema } = require('./user/friendRequest');
 
 const UserSchema = new Schema({
     nickName: { type: String, required: true },
@@ -15,6 +17,8 @@ const UserSchema = new Schema({
     gold: GoldSchema,
     level: LevelSchema,
     activity: ActivitySchema,
+    friends: [FriendSchema],
+    friendRequests: [FriendRequestSchema],
 });
 
 const User = mongoose.model('user', UserSchema);
