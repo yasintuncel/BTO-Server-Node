@@ -6,6 +6,7 @@ const FriendSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'user',
         required: true,
+        unique: true,
     },
     playCount: { type: Number, default: 0 },
     createdAt: { type: Number, default: Date.now },

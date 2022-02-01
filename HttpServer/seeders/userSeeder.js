@@ -19,7 +19,7 @@ const seedUsersInformation = [
     },
     {
         nickName: "Engineer",
-        friends: ['Electronic']
+        friends: ['Electronic', 'Coder']
     },
     {
         nickName: "Coder",
