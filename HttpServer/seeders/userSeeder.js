@@ -2,7 +2,7 @@ const config = require('../config');
 const { User } = require('common/database/models/user');
 const createNewGuestUser = require('common/database/functions/createNewGuestUser');
 const { Activity } = require('common/database/models/user/activity');
-const { Friend } = require('common/database/models/user/friend');
+const makeFriend = require('common/database/functions/makeFriend');
 
 const seedUsersInformation = [
     {
@@ -11,11 +11,11 @@ const seedUsersInformation = [
     },
     {
         nickName: "Akdeniz",
-        friends: ['Yasin']
+        friends: ['Yasin', 'Electronic']
     },
     {
         nickName: "Electronic",
-        friends: ['Yasin', 'Engineer']
+        friends: ['Yasin', 'Engineer', 'Akdeniz']
     },
     {
         nickName: "Engineer",
@@ -31,12 +31,19 @@ const addFriends = async function () {
     for (const userInfo of seedUsersInformation) {
         for (const friendName of userInfo.friends) {
             let user = await User.findOne({ 'nickName': userInfo.nickName });
-            if (user.friends.length !== userInfo.friends.length) {
-                let friend = await User.findOne({ 'nickName': friendName });
-                let fSchema = Friend();
-                fSchema.user = friend;
-                user.friends.push(fSchema);
-                await user.save();
+            let friend = await User.findOne({ 'nickName': friendName });
+
+            let isExist = false;
+            for (let i = 0; i < user.friends.length; i++) {
+                const f = user.friends[i];
+                if (f.user.toString() === friend._id.toString()) {
+                    isExist = true;
+                    break;
+                }
+            }
+
+            if (!isExist) {
+                await makeFriend(user._id, friend._id);
                 console.log('friend added.');
             }
         }
