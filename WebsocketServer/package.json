@@ -5,5 +5,10 @@
   "main": "server.js",
   "keywords": [],
   "author": "yasintuncel",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "common": "file:../CommonFiles",
+    "ws": "^8.5.0",
+    "jsonwebtoken": "^8.5.1"
+  }
 }
