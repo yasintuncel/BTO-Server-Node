@@ -1,17 +1,19 @@
-const { User } = require('common/database/models/user');
+const onUserConnect = require('./user/onUserConnect');
+const onUserDisconnect = require('./user/onUserDisconnect');
 
 const clientManager = {
     handleClient: async function (socket, request) {
         const userId = request.user.id.toString();
-        let user = await User.findById(userId);
-        console.log(userId + ' connected. Nickname: ' + user.nickName);
+        const connectionStatus = await onUserConnect(socket, userId);
+        //
+        if (!connectionStatus.isValidUser) return;
         //
         socket.on('message', function incoming(message) {
-            console.log(user.nickName + '>_ ' + message);
+            console.log(user.nickName + '>_ ' + JSON.parse(message).message);
         });
         //
-        socket.on('close', function (code) {
-            console.log(userId + ' disconnected. Nickname: ' + user.nickName + ' Code: ' + code);
+        socket.on('close', async function (code) {
+            await onUserDisconnect(socket, userId, code);
         });
     },
 };
