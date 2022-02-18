@@ -1,4 +1,5 @@
 const WebSocketServer = require('ws').Server;
+const clientManager = require('./client/clientManager');
 const websocketMiddleware = require('./middlewares/websocketMiddleware');
 
 const createWebsocketServer = function (port) {
@@ -10,9 +11,7 @@ const createWebsocketServer = function (port) {
             console.log('Websocket Server started: Port: ' + port);
         });
 
-    wss.on('connection', function connection(client, req) {
-        //clientManager.handleClient(client, req, masterSocket);
-    });
+    wss.on('connection', clientManager.handleClient);
 };
 
 module.exports = createWebsocketServer;
