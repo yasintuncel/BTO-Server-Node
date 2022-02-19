@@ -9,9 +9,8 @@ const createWebsocketServer = function (port) {
     },
         () => {
             console.log('Websocket Server started: Port: ' + port);
+            wss.on('connection', clientManager.handleClient);
         });
-
-    wss.on('connection', clientManager.handleClient);
 };
 
 module.exports = createWebsocketServer;

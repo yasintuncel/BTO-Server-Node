@@ -1,8 +1,8 @@
 const { User } = require('common/database/models/user');
 
-const onUserDisconnect = async function (socket, userId, code){
-    let user = await User.findById(userId);
-    console.log(userId + ' disconnected. Nickname: ' + user.nickName + ' Code: ' + code);
+const onUserDisconnect = async function (userClient, code){
+    let user = await User.findById(userClient.userId);
+    console.log(userClient.userId + ' disconnected. Nickname: ' + user.nickName + ' Code: ' + code);
     //
     if (user.activity.isInGame) {
         // TODO if is in game

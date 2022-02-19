@@ -26,7 +26,9 @@ const clientManager = {
         });
         //
         socket.on('close', async function (code) {
-            await onUserDisconnect(socket, userId, code);
+            await onUserDisconnect(userClient, code);
+            if (userId in userClients)
+                delete userClients[userId];
         });
     },
 };

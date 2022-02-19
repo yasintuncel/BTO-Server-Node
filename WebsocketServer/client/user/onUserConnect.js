@@ -31,11 +31,9 @@ const onUserConnect = async function (socket, userId) {
     console.log(userId + ' connected. Nickname: ' + user.nickName);
     user.activity.isOnline = true;
     await user.save();
-    // TODO check user status for is in game
     return {
         isValidUser: true,
         user: user,
-        isIngame: false,
     };
 };
 
