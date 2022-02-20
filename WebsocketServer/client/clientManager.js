@@ -1,3 +1,4 @@
+const commandManager = require('./command/commandManager');
 const onUserConnect = require('./user/onUserConnect');
 const onUserDisconnect = require('./user/onUserDisconnect');
 
@@ -21,7 +22,15 @@ const clientManager = {
         userClients[userId] = userClient;
 
         socket.on('message', function incoming(message) {
-            console.log(user.nickName + '>_ ' + JSON.parse(message).message);
+            try {
+                commandManager.handleCommand(userClients, userClient, JSON.parse(message.toString()));
+            }
+            catch (err) {
+                console.log('User Action. User id: ' + userClient.userId + ' /  Error: ' + err);
+                userClient.socket.send(JSON.stringify({
+                    error: err,
+                }));
+            }
         });
         //
         socket.on('close', async function (code) {
