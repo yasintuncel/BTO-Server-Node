@@ -1,4 +1,3 @@
-const { WebSocket } = require('ws');
 const onUserConnect = require('./user/onUserConnect');
 const onUserDisconnect = require('./user/onUserDisconnect');
 
