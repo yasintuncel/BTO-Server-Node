@@ -1,12 +1,17 @@
+const { User } = require('common/database/models/user');
 const commandTypes = require("./commandTypes");
 
+let commands = {},
+
+
+
 const commandManager = {
-    commands: {},
-    addCommands: function (command, func) {
-        commandManager.commands[command] = func;
+    addCommands: function (cmd, fnc) {
+        commands[cmd] = fnc;
     },
     setCommands: function () {
-        commandManager.addCommands(commandTypes.globalMessage, onGlobalMessage);
+        // add all commands
+        // commandManager.addCommands(commandTypes.globalMessage, onGlobalMessage);
     },
     handleCommand: async function (userClients, userClient, message) {
         let data = message.data;
