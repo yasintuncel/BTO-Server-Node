@@ -1,5 +1,5 @@
 const { User } = require('common/database/models/user');
-const commandTypes = require('../../types/commandTypes');
+const commandTypes = require('../command/commandTypes');
 
 const onUserConnect = async function (socket, userId) {
     let user = await User.findById(userId);
