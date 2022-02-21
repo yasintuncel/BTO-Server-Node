@@ -1,17 +1,19 @@
 const { User } = require('common/database/models/user');
 const commandTypes = require("./commandTypes");
+const onGlobalMessage = require('../commandFunctions/onGlobalMessage');
+const onPrivateMessage = require('../commandFunctions/onPrivateMessage');
 
-let commands = {},
+let commands = {};
 
-
+const addCommand = function (cmd, fnc) {
+    commands[cmd] = fnc;
+};
 
 const commandManager = {
-    addCommands: function (cmd, fnc) {
-        commands[cmd] = fnc;
-    },
     setCommands: function () {
         // add all commands
-        // commandManager.addCommands(commandTypes.globalMessage, onGlobalMessage);
+        addCommand(commandTypes.globalMessage, onGlobalMessage);
+        addCommand(commandTypes.privateMessage, onPrivateMessage);
     },
     handleCommand: async function (userClients, userClient, message) {
         let data = message.data;
@@ -20,10 +22,11 @@ const commandManager = {
         userClient.user = await User.findById(userClient.userId);
         //
         try {
-            commands[type]({ userClients, userClient, data });
+
+            await commands[type]({ userClients, userClient, data });
         }
         catch (err) {
-            console.log('Command error. No command defined for ' + type);
+            console.log('Command error. No command defined for ' + type + '.\n Error: ' + err);
         }
         console.log('User Action. User id: ' + userClient.userId + ' /  Action: ' + message.type);
     },
